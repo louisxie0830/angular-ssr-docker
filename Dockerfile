@@ -28,7 +28,9 @@ RUN npm run build:ssr
 FROM node:lts
 # Bundle APP files
 WORKDIR /app
-COPY --from=builder /app /app
+COPY --from=builder /app/dist /app/dist
+COPY package.json /app
+
 EXPOSE 4000
 
 CMD ["npm","run","serve:ssr"]
